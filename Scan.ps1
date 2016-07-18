@@ -391,7 +391,7 @@ Param ()
  echo "GPPPassword scanning...."
  Get-GPPPassword | Out-File $results\test.txt -Append
 
-
+# Mattifistation's Script
 function Get-AssociatedClassRelationship {
 
     param (
