@@ -56,6 +56,7 @@ echo "******************* User info ***********************" | Out-File $results
 echo `r`n | Out-File $results\test.txt -Append
 #net group /domain | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
+
 echo "**** Domain Administrators ****" | Out-File $results\test.txt -Append
 net group "Domain Admins" /domain | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
@@ -147,6 +148,8 @@ echo `r`n | Out-File $results\test.txt -Append
     dir c:\*ultravnc.ini /s /b | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
     dir c:\ /s /b | findstr /si *vnc.ini | Out-File $results\test.txt -Append
+    echo `r`n | Out-File $results\test.txt -Append
+    dir c:\ /s /b | findstr /si *.ps1 | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
 
     findstr /si password *.txt | *.xml | *.ini | Out-File $results\test.txt -Append
@@ -387,6 +390,52 @@ Param ()
 
  echo "GPPPassword scanning...."
  Get-GPPPassword | Out-File $results\test.txt -Append
+
+
+function Get-AssociatedClassRelationship {
+
+    param (
+
+        [String]
+
+        $Namespace = 'root/cimv2'
+
+    )
+
+
+
+
+    Get-CimClass -Namespace $Namespace | ? { $_.CimClassQualifiers['Association'] -and (-not $_.CimClassQualifiers['Abstract']) } | % {
+
+        $KeyQualifiers = @($_.CimClassProperties | ? { $_.Qualifiers['key'] })
+
+
+
+
+        if ($KeyQualifiers.Count -eq 2) {
+
+            $Properties = [Ordered] @{
+
+                AssociationClassName = $_.CimClassName
+
+                LinkedClassName1 = $KeyQualifiers[0].ReferenceClassName
+
+                LinkedClassName2 = $KeyQualifiers[1].ReferenceClassName
+
+            }
+
+
+
+
+            New-Object PSObject -Property $Properties
+
+        }
+
+    }
+
+}
+echo "Enumerating all association classes...."
+Get-AssociatedClassRelationship | Out-File $results\test.txt -Append
 
 #Stop timer
 $sw.Stop()
