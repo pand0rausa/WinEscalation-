@@ -14,7 +14,7 @@
 
 
 
-# There is now a mimicatz module for this.
+# There is now a mimicatz module for this. The manual way above can be helpful when worried about mimicatz detection/blocking.
 
 Mimicatz: # ts::sessions
 Mimicatz: # ts::remote /id:<ID>
