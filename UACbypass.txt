@@ -1,1 +1,2 @@
 https://github.com/hfiref0x/UACME
+https://enigma0x3.net/2017/03/14/bypassing-uac-using-app-paths/
