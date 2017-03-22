@@ -1,0 +1,11 @@
+https://toshellandback.com/2015/09/30/anti-virus/
+https://room362.com/post/2011/2011-05-30-remote-dll-injection-with-meterpreter/
+https://www.christophertruncer.com/bypass-antivirus-with-meterpreter-as-the-payload-hyperion-fun/
+
+
+#Injecting shellcode into memory to avoid AV
+http://www.securityandit.com/security/excel-malware-with-metasploit/
+http://resources.infosecinstitute.com/using-createremotethread-for-dll-injection-on-windows/
+
+#Reflective DLL
+https://securitycafe.ro/2015/02/26/upgrade-your-dll-to-reflective-dll/
