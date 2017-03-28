@@ -1,4 +1,4 @@
-# https://bugs.chromium.org/p/project-zero/issues/detail?id=1021
+// https://bugs.chromium.org/p/project-zero/issues/detail?id=1021
 
 using System;
 using System.Collections.Generic;
