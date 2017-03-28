@@ -12,3 +12,7 @@ Commands on how to hijack a TS session on a box (must have admin rights).
 
 UACbypass.txt:
 URLs discussing different methods of bypassing UAC.
+
+
+MS17-012/CVE-2017-0100:
+Start-ProcessInSession.ps1 & MS17-012.cs - non-priveleged session hijack
