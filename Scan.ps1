@@ -32,6 +32,9 @@ c:\windows\system32\sc qc Spooler | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc IKEEXT | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc upnphost | Out-File $results\test.txt -Append
 
+# Missing autoruns
+c:\sysinternals\autorunsc.exe -a | findstr /n /R "File\ not\ found" | Out-File $results\test.txt -Append
+
 echo "**** List Shadow Copies ****"  | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
 
