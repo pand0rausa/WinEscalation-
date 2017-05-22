@@ -154,6 +154,15 @@ echo `r`n | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
     dir c:\ /s /b | findstr /si *.ps1 | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
+    # Use bin2dmp.exe "wsrv2008r2-1.vmem" vmware.dmp to convert to dump file then extract passwords from memory
+    dir c:\ /s /b | findstr /si *.vmem | Out-File $results\test.txt -Append
+    echo `r`n | Out-File $results\test.txt -Append
+    dir c:\ /s /b | findstr /si *.rdp | Out-File $results\test.txt -Append
+    echo `r`n | Out-File $results\test.txt -Append
+    dir c:\ /s /b | findstr /si web.config | Out-File $results\test.txt -Append
+    echo `r`n | Out-File $results\test.txt -Append
+    dir c:\ /s /b | findstr /si SiteList.xml | Out-File $results\test.txt -Append
+    echo `r`n | Out-File $results\test.txt -Append
 
     findstr /si password *.txt | *.xml | *.ini | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
