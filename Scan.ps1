@@ -452,7 +452,7 @@ function Get-AssociatedClassRelationship {
 echo "Enumerating all association classes...."
 Get-AssociatedClassRelationship | Out-File $results\test.txt -Append
 
-
+# From Nishang Get-Information.ps1
 function registry_values($regkey, $regvalue,$child) 
     { 
         if ($child -eq "no"){$key = get-item $regkey} 
