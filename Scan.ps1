@@ -32,8 +32,21 @@ c:\windows\system32\sc qc Spooler | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc IKEEXT | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc upnphost | Out-File $results\test.txt -Append
 
-# Missing autoruns
-c:\sysinternals\autorunsc.exe -a | findstr /n /R "File\ not\ found" | Out-File $results\test.txt -Append
+# Auto Start files
+# c:\sysinternals\autorunsc.exe -a | findstr /n /R "File\ not\ found" 
+reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup" | Out-File $results\test.txt -Append
+reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" | Out-File $results\test.txt -Append
+reg query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run" | Out-File $results\test.txt -Append
+reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" | Out-File $results\test.txt -Append
+dir "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" | Out-File $results\test.txt -Append
+dir "C:\Users\U507654\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" | Out-File $results\test.txt -Append
+reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run" | Out-File $results\test.txt -Append
+reg query "HKLM\System\CurrentControlSet\Services" | Out-File $results\test.txt -Append
+reg query "" | Out-File $results\test.txt -Append
+reg query "" | Out-File $results\test.txt -Append
+reg query "" | Out-File $results\test.txt -Append
+reg query "" | Out-File $results\test.txt -Append
+reg query "" | Out-File $results\test.txt -Append
 
 echo "**** List Shadow Copies ****"  | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
@@ -165,6 +178,8 @@ echo `r`n | Out-File $results\test.txt -Append
     dir c:\ /s /b | findstr /si web.config | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
     dir c:\ /s /b | findstr /si SiteList.xml | Out-File $results\test.txt -Append
+    echo `r`n | Out-File $results\test.txt -Append
+    dir c:\ /s /b | findstr /si *.cmd | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
 
     findstr /si password *.txt | *.xml | *.ini | Out-File $results\test.txt -Append
