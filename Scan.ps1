@@ -42,11 +42,6 @@ dir "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" | Out-File $r
 dir "C:\Users\U507654\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" | Out-File $results\test.txt -Append
 reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run" | Out-File $results\test.txt -Append
 reg query "HKLM\System\CurrentControlSet\Services" | Out-File $results\test.txt -Append
-reg query "" | Out-File $results\test.txt -Append
-reg query "" | Out-File $results\test.txt -Append
-reg query "" | Out-File $results\test.txt -Append
-reg query "" | Out-File $results\test.txt -Append
-reg query "" | Out-File $results\test.txt -Append
 
 echo "**** List Shadow Copies ****"  | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
