@@ -32,7 +32,7 @@ c:\windows\system32\sc qc Spooler | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc IKEEXT | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc upnphost | Out-File $results\test.txt -Append
 
-# Auto Start files
+# Auto Start files. Search for missing files that don't use a explicit path.
 # c:\sysinternals\autorunsc.exe -a | findstr /n /R "File\ not\ found" 
 reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup" | Out-File $results\test.txt -Append
 reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" | Out-File $results\test.txt -Append
