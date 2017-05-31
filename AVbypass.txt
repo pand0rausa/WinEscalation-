@@ -9,3 +9,8 @@ http://resources.infosecinstitute.com/using-createremotethread-for-dll-injection
 
 #Reflective DLL
 https://securitycafe.ro/2015/02/26/upgrade-your-dll-to-reflective-dll/
+
+
+# Derbycon 3 - Bypass AV
+https://www.youtube.com/watch?v=ycgaekqAkpA
+
