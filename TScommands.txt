@@ -9,7 +9,7 @@
 # Results should come back with "[SC] CreateService SUCCESS"
 
 # Start the service
->net setart sesshijack
+>net start sesshijack
 
 
 
