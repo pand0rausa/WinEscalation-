@@ -39,7 +39,7 @@ reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" | Out-File $resul
 reg query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run" | Out-File $results\test.txt -Append
 reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" | Out-File $results\test.txt -Append
 dir "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" | Out-File $results\test.txt -Append
-dir "C:\Users\U507654\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" | Out-File $results\test.txt -Append
+dir "C:\Users\<user>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" | Out-File $results\test.txt -Append
 reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run" | Out-File $results\test.txt -Append
 reg query "HKLM\System\CurrentControlSet\Services" | Out-File $results\test.txt -Append
 
