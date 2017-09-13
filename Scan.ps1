@@ -172,6 +172,8 @@ echo `r`n | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
     dir c:\ /s /b | findstr /si web.config | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
+    dir c:\ /s /b | findstr /si applicationHost.config | Out-File $results\test.txt -Append
+    echo `r`n | Out-File $results\test.txt -Append
     dir c:\ /s /b | findstr /si SiteList.xml | Out-File $results\test.txt -Append
     echo `r`n | Out-File $results\test.txt -Append
     dir c:\ /s /b | findstr /si *.cmd | Out-File $results\test.txt -Append
