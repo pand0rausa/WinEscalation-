@@ -239,7 +239,8 @@ echo `r`n | Out-File $results\test.txt -Append
 
     # Oracle (Untested)
 
-
+    # IIS App Pool Stored Password. If Password is encrypted run "c:\windows\system32\inetsrv\appcmd list apppool /text:*" to decrypt
+    cat C:\Windows\System32\inetsrv\config\applicationHost.config | Out-File $results\test.txt -Append
 
 echo `r`n | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
