@@ -1,0 +1,7 @@
+# Interactive
+enter-pssession -Credential <domain\user> -Computername <hostname/IP>
+
+#One time command
+Invoke-Command -ComputerName <hostname/IP> -Credential <domain\user>
+
+
