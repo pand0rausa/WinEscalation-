@@ -27,6 +27,14 @@ echo "**** Scheduled Tasks ****" | Out-File $results\test.txt -Append
 schtasks /query /fo list /v | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
 
+echo "**** Powershell Variables ****" | Out-File $results\test.txt -Append
+Get-Variable |%{ "Name : {0}`r`nValue: {1}`r`n" -f $_.Name,$_.Value } | Out-File $results\test.txt -Append
+echo `r`n | Out-File $results\test.txt -Append
+
+echo "**** System Env Variables ****" | Out-File $results\test.txt -Appen
+Get-ChildItem Env: | Out-File $results\test.txt -Appen
+echo `r`n | Out-File $results\test.txt -Append
+
 echo "**** Vulnerable Services ****" | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc Spooler | Out-File $results\test.txt -Append
 c:\windows\system32\sc qc IKEEXT | Out-File $results\test.txt -Append
