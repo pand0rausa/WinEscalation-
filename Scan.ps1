@@ -19,6 +19,10 @@ echo "**** Dump of GPO ****" | Out-File $results\test.txt -Append
 gpresult /z | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
 
+echo "**** Dump of Logged On Sessions ****" | Out-File $results\test.txt -Append
+net session /list | Out-File $results\test.txt -Append
+echo `r`n | Out-File $results\test.txt -Append
+
 echo "**** Dump of DNS Sites Visited ****" | Out-File $results\test.txt -Append
 ipconfig /displaydns | select-string 'Record Name' | foreach-object { $_.ToString().Split(' ')[-1]   } | Sort | Out-Gridview | Out-File $results\test.txt -Append
 echo `r`n | Out-File $results\test.txt -Append
