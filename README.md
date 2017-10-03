@@ -25,6 +25,7 @@ Requirements: Powershell v.3
 Comments: The technique used to query LDAP was based on the "Get-AuditDSDisabledUserAcount" 
 function found in Carols Perez's PoshSec-Mod project.#
 Modded to bypass AV sig detection.
+https://github.com/nullbind/Powershellery/blob/master/Stable-ish/Get-SPN/Get-SPN.psm1
 
 Get-SPM.psm1: 
 
