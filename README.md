@@ -37,3 +37,6 @@ mimikitt.ps1
 
 Mimikatz mod to avoid AV
 mimi.ps1
+
+Powerview mod to avoid AV
+powervw.ps1
