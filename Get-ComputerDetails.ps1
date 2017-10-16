@@ -1,46 +1,5 @@
-function Get-ComputerDetails
+function Get-CompDetails
 {
-<#
-.SYNOPSIS
-
-This script is used to get useful information from a computer.
-
-Function: Get-ComputerDetails
-Author: Joe Bialek, Twitter: @JosephBialek
-Required Dependencies: None
-Optional Dependencies: None
-
-.DESCRIPTION
-
-This script is used to get useful information from a computer. Currently, the script gets the following information:
--Explicit Credential Logons (Event ID 4648)
--Logon events (Event ID 4624)
--AppLocker logs to find what processes are created
--PowerShell logs to find PowerShell scripts which have been executed
--RDP Client Saved Servers, which indicates what servers the user typically RDP's in to
-
-.PARAMETER ToString
-
-Switch: Outputs the data as text instead of objects, good if you are using this script through a backdoor.
-	
-.EXAMPLE
-
-Get-ComputerDetails
-Gets information about the computer and outputs it as PowerShell objects.
-
-Get-ComputerDetails -ToString
-Gets information about the computer and outputs it as raw text.
-
-.NOTES
-This script is useful for fingerprinting a server to see who connects to this server (from where), and where users on this server connect to. 
-You can also use it to find Powershell scripts and executables which are typically run, and then use this to backdoor those files.
-
-.LINK
-
-Blog: http://clymb3r.wordpress.com/
-Github repo: https://github.com/clymb3r/PowerShell
-
-#>
 
     Param(
         [Parameter(Position=0)]
@@ -90,36 +49,7 @@ Github repo: https://github.com/clymb3r/PowerShell
 
 function Find-4648Logons
 {
-<#
-.SYNOPSIS
 
-Retrieve the unique 4648 logon events. This will often find cases where a user is using remote desktop to connect to another computer. It will give the 
-the account that RDP was launched with and the account name of the account being used to connect to the remote computer. This is useful
-for identifying normal authenticaiton patterns. Other actions that will trigger this include any runas action.
-
-Function: Find-4648Logons
-Author: Joe Bialek, Twitter: @JosephBialek
-Required Dependencies: None
-Optional Dependencies: None
-
-.DESCRIPTION
-
-Retrieve the unique 4648 logon events. This will often find cases where a user is using remote desktop to connect to another computer. It will give the 
-the account that RDP was launched with and the account name of the account being used to connect to the remote computer. This is useful
-for identifying normal authenticaiton patterns. Other actions that will trigger this include any runas action.
-
-.EXAMPLE
-
-Find-4648Logons
-Gets the unique 4648 logon events.
-
-.NOTES
-
-.LINK
-
-Blog: http://clymb3r.wordpress.com/
-Github repo: https://github.com/clymb3r/PowerShell
-#>
     Param(
         $SecurityLog
     )
@@ -218,34 +148,7 @@ Github repo: https://github.com/clymb3r/PowerShell
 
 function Find-4624Logons
 {
-<#
-.SYNOPSIS
 
-Find all unique 4624 Logon events to the server. This will tell you who is logging in and how. You can use this to figure out what accounts do
-network logons in to the server, what accounts RDP in, what accounts log in locally, etc...
-
-Function: Find-4624Logons
-Author: Joe Bialek, Twitter: @JosephBialek
-Required Dependencies: None
-Optional Dependencies: None
-
-.DESCRIPTION
-
-Find all unique 4624 Logon events to the server. This will tell you who is logging in and how. You can use this to figure out what accounts do
-network logons in to the server, what accounts RDP in, what accounts log in locally, etc...
-
-.EXAMPLE
-
-Find-4624Logons
-Find unique 4624 logon events.
-
-.NOTES
-
-.LINK
-
-Blog: http://clymb3r.wordpress.com/
-Github repo: https://github.com/clymb3r/PowerShell
-#>
     Param (
         $SecurityLog
     )
@@ -364,32 +267,7 @@ Github repo: https://github.com/clymb3r/PowerShell
 
 function Find-AppLockerLogs
 {
-<#
-.SYNOPSIS
 
-Look through the AppLocker logs to find processes that get run on the server. You can then backdoor these exe's (or figure out what they normally run).
-
-Function: Find-AppLockerLogs
-Author: Joe Bialek, Twitter: @JosephBialek
-Required Dependencies: None
-Optional Dependencies: None
-
-.DESCRIPTION
-
-Look through the AppLocker logs to find processes that get run on the server. You can then backdoor these exe's (or figure out what they normally run).
-
-.EXAMPLE
-
-Find-AppLockerLogs
-Find process creations from AppLocker logs.
-
-.NOTES
-
-.LINK
-
-Blog: http://clymb3r.wordpress.com/
-Github repo: https://github.com/clymb3r/PowerShell
-#>
     $ReturnInfo = @{}
 
     $AppLockerLogs = Get-WinEvent -LogName "Microsoft-Windows-AppLocker/EXE and DLL" -ErrorAction SilentlyContinue | Where {$_.Id -eq 8002}
@@ -428,34 +306,7 @@ Github repo: https://github.com/clymb3r/PowerShell
 
 Function Find-PSScriptsInPSAppLog
 {
-<#
-.SYNOPSIS
 
-Go through the PowerShell operational log to find scripts that run (by looking for ExecutionPipeline logs eventID 4100 in PowerShell app log).
-You can then backdoor these scripts or do other malicious things.
-
-Function: Find-AppLockerLogs
-Author: Joe Bialek, Twitter: @JosephBialek
-Required Dependencies: None
-Optional Dependencies: None
-
-.DESCRIPTION
-
-Go through the PowerShell operational log to find scripts that run (by looking for ExecutionPipeline logs eventID 4100 in PowerShell app log).
-You can then backdoor these scripts or do other malicious things.
-
-.EXAMPLE
-
-Find-PSScriptsInPSAppLog
-Find unique PowerShell scripts being executed from the PowerShell operational log.
-
-.NOTES
-
-.LINK
-
-Blog: http://clymb3r.wordpress.com/
-Github repo: https://github.com/clymb3r/PowerShell
-#>
     $ReturnInfo = @{}
     $Logs = Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" -ErrorAction SilentlyContinue | Where {$_.Id -eq 4100}
 
@@ -508,34 +359,7 @@ Github repo: https://github.com/clymb3r/PowerShell
 
 Function Find-RDPClientConnections
 {
-<#
-.SYNOPSIS
 
-Search the registry to find saved RDP client connections. This shows you what connections an RDP client has remembered, indicating what servers the user 
-usually RDP's to.
-
-Function: Find-RDPClientConnections
-Author: Joe Bialek, Twitter: @JosephBialek
-Required Dependencies: None
-Optional Dependencies: None
-
-.DESCRIPTION
-
-Search the registry to find saved RDP client connections. This shows you what connections an RDP client has remembered, indicating what servers the user 
-usually RDP's to.
-
-.EXAMPLE
-
-Find-RDPClientConnections
-Find unique saved RDP client connections.
-
-.NOTES
-
-.LINK
-
-Blog: http://clymb3r.wordpress.com/
-Github repo: https://github.com/clymb3r/PowerShell
-#>
     $ReturnInfo = @{}
 
     New-PSDrive -Name HKU -PSProvider Registry -Root Registry::HKEY_USERS | Out-Null
