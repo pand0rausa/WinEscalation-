@@ -1,4 +1,5 @@
-﻿# Will scan for common misconfigurations in Windows as a non-priv user.
+function scan-windows {
+# Will scan for common misconfigurations in Windows as a non-priv user.
 # Things it looks for:
 # PowerShell console command history, Environment variables, stored wireless credentials, Symantec reg values (some require admin privs to see), 
 # Kerberos tickets, dump powershell profiles, dump sysprep configs\admin creds, search both "Program Files" directories for writable files,
@@ -139,3 +140,5 @@ if ($unquoted = $cim | select name,startmode,pathname | where {($_.startmode -eq
 # Scan for common config files
 $commonfiles = Get-ChildItem -Path c:\ -include ('*.ica', '*.ora', '*.bat', '*.ps1', '*.sql', '*.rdp', 'Applicationhost.config', 'accessTokens.json', '*.config', '*.xml', '*.cer', '*.pem', '*.pfx') -Exclude "c:\Windows.old" -Recurse -File -Name
 foreach ($commonfile in $commonfiles){write-host "c:\$commonfile" -ForegroundColor Red; gc "c:\$commonfile" | Select-String "password"}
+
+}
